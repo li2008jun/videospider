@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mongo>
+    <servers>
+        <!-- 配置服务器列表（分片或主从）, 多个地址一个;分割 -->
+        <server name="cralwer-server"
+                address="172.16.1.201:40000;172.16.1.202:40000;172.16.1.203:40000"
+                poolSize="16" blockSize="10">
+            <dbs>
+                <db name="crawler">
+                    <collections>
+                        <collection name="url" id="url">
+                            <indexes>
+                                <index>
+                                    <key field="status" />
+                                    <key field="fetchTime" sort="-1" />
+                                </index>
+                            </indexes>
+                        </collection>
+                        <collection name="newslog" id="newslog">
+                            <indexes>
+                                <index>
+                                    <key field="boardUrl" />
+                                </index>
+                            </indexes>
+                        </collection>
+                        <collection name="board" id="board"></collection>
+                        <collection id="documentTags" name="documentTags" />
+                        <collection id="tags" name="tags" />
+                        <collection id="news2" name="news2"></collection>
+                        <collection id="newsInfo" name="newsInfo"></collection>
+                        <collection id="channelKeyWords" name="channelKeyWords" />
+                        <collection id="topics" name="topics" />
+                        <collection id="template" name="template"></collection>
+                        <collection id="classification" name="classification"></collection>
+                        <collection id="cityInfo" name="cityInfo"></collection>
+                        <collection id="newsFingerprint" name="newsFingerprint"></collection>
+                        <collection id="classificationTags" name="classificationTags">
+                            <indexes>
+                                <index>
+                                    <key field="name" />
+                                </index>
+                            </indexes>
+                        </collection>
+                        <collection id="cityClassification" name="cityClassification"></collection>
+                        <collection id="host" name="host"></collection>
+                        <collection id="images" name="images">
+                            <indexes>
+                                <index>
+                                    <key field="random" sort="1" />
+                                </index>
+                            </indexes>
+                        </collection>
+                        <collection id="twoLevelClassification" name="twoLevelClassification"></collection>
+                        <collection id="duplicate" name="duplicate" ></collection>
+                        <collection id="boardMovie" name="boardMovie" ></collection>
+                        <collection id="templateMovie" name="templateMovie" ></collection>
+                        <collection id="urlMovie" name="urlMovie" ></collection>
+                        <collection id="boardVideo" name="boardVideo" ></collection>
+                        <collection id="templateVideo" name="templateVideo" ></collection>
+                        <collection id="urlVideo" name="urlVideo" ></collection>
+                        <collection id="videoInfo" name="videoInfo" ></collection>
+                    </collections>
+                </db>
+            </dbs>
+        </server>
+
+        <server name="biz-server"
+                address="172.16.1.206:30000;172.16.1.207:30000;172.16.1.208:30000"
+                poolSize="16" blockSize="10">
+            <dbs>
+                <db name="biz_db">
+                    <collections>
+                        <collection id="news" name="news" />
+                        <collection id="newsTags" name="newsTags"></collection>
+                        <collection id="tagSimilarity" name="tagSimilarity"></collection>
+                        <collection id="recomSmilarity" name="recomSmilarity"></collection>
+                        <collection id="newsSource" name="newsSource"></collection>
+                        <collection id="channel" name="channel" />
+                        <collection id="city" name="city" />
+                    </collections>
+                </db>
+            </dbs>
+        </server>
+
+    </servers>
+</mongo>
